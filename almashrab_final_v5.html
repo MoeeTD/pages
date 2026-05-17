@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#C9A86C;--gl:#E8D5A3;--ink:#0D0B07;--is:#1A1710;--im:#2C2820;--cream:#F7F3EC;--mu:#9A8F78;--bd:#3A3020;--bl:#C9A86C40}
+body{font-family:'Tajawal',sans-serif;background:var(--ink);color:#F0EAD6;direction:rtl;text-align:right}
+.deck{max-width:860px;margin:0 auto;padding:2rem 1.5rem}
+.slide{border:0.5px solid var(--bd);border-radius:16px;margin-bottom:2.5rem;overflow:hidden;background:var(--is)}
+.cover{background:var(--ink);padding:4rem 3rem;text-align:center;border:0.5px solid var(--gold);min-height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem}
+.bname{font-size:6rem;font-weight:900;color:var(--gold);line-height:1}
+.bsub{font-size:0.9rem;color:#9A8F7899;letter-spacing:0.15em;font-weight:300}
+.btag{font-size:1rem;color:var(--mu);font-weight:300;letter-spacing:0.18em;border-top:0.5px solid var(--bl);padding-top:1.2rem;width:80%}
+.hdr{background:var(--im);padding:2.5rem 3rem;border-bottom:0.5px solid var(--bl)}
+.hnum{font-size:0.7rem;color:#C9A86CB3;letter-spacing:0.3em;margin-bottom:0.5rem}
+.htitle{font-size:2rem;font-weight:700;color:var(--gold);line-height:1.2}
+.hsub{font-size:1rem;color:var(--mu);font-weight:300;margin-top:0.4rem}
+.body{padding:2rem 3rem 2.5rem}
+.gline{width:60px;height:1px;background:var(--gold);margin:0 0 1.5rem}
+.stmt{font-size:1.4rem;font-weight:700;color:var(--cream);line-height:1.7;margin-bottom:1.5rem;border-right:3px solid var(--gold);padding-right:1.2rem}
+.stmt em{color:var(--gold);font-style:normal}
+.bt{font-size:1rem;color:var(--mu);line-height:1.9;font-weight:300}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.card{background:var(--ink);border:0.5px solid var(--bl);border-radius:12px;padding:1.25rem 1.5rem}
+.cg{border-color:#C9A86C80;border-top:2px solid var(--gold)}
+.clbl{font-size:0.7rem;color:var(--gold);letter-spacing:0.25em;font-weight:500;margin-bottom:0.5rem}
+.ctitle{font-size:1.05rem;font-weight:700;color:var(--cream);margin-bottom:0.4rem;line-height:1.4}
+.ctext{font-size:0.83rem;color:var(--mu);line-height:1.7;font-weight:300}
+.pillar{background:var(--ink);border:0.5px solid var(--bl);border-radius:12px;padding:1.5rem;border-top:3px solid var(--gold)}
+.pnum{font-size:0.72rem;color:#C9A86C99;letter-spacing:0.2em;margin-bottom:0.4rem}
+.ptitle{font-size:1rem;font-weight:700;color:var(--gold);margin-bottom:0.5rem}
+.ptext{font-size:0.82rem;color:var(--mu);line-height:1.7;font-weight:300}
+.persona{background:var(--ink);border:0.5px solid var(--bl);border-radius:12px;padding:1.2rem;text-align:center}
+.pname{font-size:0.9rem;font-weight:700;color:var(--cream);margin-bottom:0.25rem}
+.page{font-size:0.75rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.5rem}
+.pdesc{font-size:0.78rem;color:var(--mu);line-height:1.6;font-weight:300}
+.titem{display:flex;align-items:flex-start;gap:1.2rem;padding:1.2rem 0;border-bottom:0.5px solid #3A302099}
+.titem:last-child{border-bottom:none}
+.tdot{width:36px;height:36px;border-radius:50%;background:#C9A86C26;border:1px solid #C9A86C80;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:var(--gold)}
+.ttitle{font-size:0.95rem;font-weight:700;color:var(--cream);margin-bottom:0.3rem}
+.ttext{font-size:0.82rem;color:var(--mu);line-height:1.6;font-weight:300}
+.trow{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:0.5px solid #3A302066}
+.trow:last-child{border-bottom:none}
+.tbadge{padding:0.3rem 0.8rem;border-radius:20px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;white-space:nowrap;flex-shrink:0}
+.tnano{background:#C9A86C26;color:var(--gold);border:0.5px solid #C9A86C66}
+.tlife{background:#C9A86C40;color:var(--gl);border:0.5px solid #C9A86C99}
+.tfood{background:#C9A86C59;color:var(--gl);border:0.5px solid var(--gold)}
+.tsoc{background:#C9A86C80;color:var(--ink);border:0.5px solid var(--gold)}
+.tceleb{background:var(--gold);color:var(--ink);border:0.5px solid var(--gl)}
+.tinfo{flex:1}
+.ttier{font-size:0.9rem;font-weight:700;color:var(--cream);margin-bottom:0.2rem}
+.tdesc2{font-size:0.8rem;color:var(--mu);font-weight:300;margin-bottom:0.2rem}
+.tstat{font-size:0.75rem;color:#C9A86CCC;font-weight:500}
+.season{background:var(--ink);border:0.5px solid var(--bl);border-radius:12px;padding:1.2rem}
+.smon{font-size:0.72rem;color:var(--gold);letter-spacing:0.2em;margin-bottom:0.4rem;font-weight:500}
+.stitle{font-size:0.9rem;font-weight:700;color:var(--cream);margin-bottom:0.3rem}
+.stext{font-size:0.78rem;color:var(--mu);line-height:1.6;font-weight:300}
+.pbadge{display:inline-block;padding:0.5rem 1.2rem;background:#C9A86C26;border:1px solid #C9A86C99;border-radius:30px;font-size:0.85rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;margin-bottom:1rem}
+.srcblk{background:var(--ink);border:0.5px solid var(--bl);border-radius:12px;padding:1.2rem;margin-bottom:0.8rem}
+.srctitle{font-size:0.85rem;font-weight:700;color:var(--gold);margin-bottom:0.5rem}
+.srclist{list-style:none}
+.srclist li{font-size:0.82rem;color:var(--mu);padding:0.25rem 0;border-bottom:0.5px solid #3A302050;font-weight:300}
+.srclist li:last-child{border-bottom:none}
+.srclist li::before{content:'— ';color:#C9A86C99}
+.pq{font-size:1.35rem;font-weight:700;color:var(--cream);border-right:4px solid var(--gold);padding-right:1.2rem;line-height:1.6;margin:1rem 0;font-style:italic;font-family:'Playfair Display',serif}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.tag{display:inline-block;padding:0.25rem 0.7rem;background:#C9A86C1F;border:0.5px solid #C9A86C66;border-radius:20px;font-size:0.75rem;color:var(--gold);margin:0.2rem;font-weight:500}
+.closing{background:var(--ink);padding:4rem 3rem;text-align:center;border:0.5px solid var(--gold);min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem}
+.cquote{font-size:1.25rem;color:var(--cream);font-weight:500;border-top:0.5px solid #C9A86C66;border-bottom:0.5px solid #C9A86C66;padding:1.2rem 2rem;font-style:italic;font-family:'Playfair Display',serif}
+.ccblk{background:var(--ink);border:0.5px solid #C9A86C99;border-radius:12px;padding:1.25rem 1.5rem;border-right:3px solid var(--gold)}
+.insight{background:var(--ink);border-right:3px solid var(--gold);border-radius:0;padding:1rem 1.2rem;margin-bottom:0.8rem}
+.insight-title{font-size:0.82rem;font-weight:700;color:var(--gold);margin-bottom:0.3rem;letter-spacing:0.05em}
+.insight-text{font-size:0.8rem;color:var(--mu);line-height:1.65;font-weight:300}
+@media(max-width:600px){.g2,.g3,.twocol{grid-template-columns:1fr}.body{padding:1.5rem}.hdr{padding:1.5rem}.bname{font-size:4rem}}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<div class="slide cover">
+  <div class="bname">المشرب</div>
+  <div class="bsub">Social Dining Lounge — جدة</div>
+  <div class="btag">عرض استراتيجي لبناء العلامة التجارية والتسويق</div>
+</div>
+
+<div class="slide">
+  <div class="hdr">
+    <div class="hnum">01 — تعريف البراند</div>
+    <div class="htitle">من هو المشرب؟</div>
+    <div class="hsub">موقعه في السوق، وسبب وجوده</div>
+  </div>
+  <div class="body">
+    <div class="pbadge">وجهة اجتماعية راقية في جدة</div>
+    <div class="stmt">المشرب ليس مطعمًا.<br>وليس مقهى.<br>وليس شيشة لاونج.<br><em>المشرب هو المجلس العصري لجدة.</em></div>
+    <div class="bt">مكان تجتمع فيه ٤ علامات غذائية متنوعة تحت سقف واحد، بجانب جلسات راقية وشيشة وأجواء تسمح لك تقضي وقتك براحة. السعر مناسب لكن الإحساس premium — لأن الإنسان يجي لأجل المكان والجو والناس، مو بس الأكل.</div>
+    <div style="margin-top:0.8rem"><span class="tag">٤ علامات غذائية</span><span class="tag">شيشة وجلسات</span><span class="tag">أجواء اجتماعية</span><span class="tag">تجربة Premium</span><span class="tag">أسعار مناسبة</span></div>
+    <div style="margin-top:2rem"><div class="gline"></div>
+    <div class="g2">
+      <div class="card cg"><div class="clbl">الفراغ في السوق</div><div class="ctitle">لا يوجد "المجلس العصري"</div><div class="ctext">جدة فيها مطاعم فاخرة وكافيهات عادية، لكن الوجهة الاجتماعية الراقية اللي تجمع كل شيء في مكان واحد غير موجودة بالشكل الصح.</div></div>
+      <div class="card cg"><div class="clbl">لماذا المشرب؟</div><div class="ctitle">التجربة الكاملة في مكان واحد</div><div class="ctext">عوض ما تتنقل بين ٣ أماكن في الليلة، المشرب يعطيك كل اللي تحتاجه: أكل، قهوة أو شيشة، سهر مع الناس، وإحساس إنك في مكان يليق فيك.</div></div>
+    </div></div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="hdr">
+    <div class="hnum">02 — شخصية البراند</div>
+    <div class="htitle">كيف يتكلم المشرب؟ كيف يُحسّ؟</div>
+    <div class="hsub">الهوية الشخصية لعلامة تجارية جدة</div>
+  </div>
+  <div class="body">
+    <div class="twocol">
+      <div>
+        <div class="gline"></div>
+        <div class="pq">"واثق من نفسه بدون ما يتعالى"</div>
+        <div class="bt" style="margin-top:1rem">المشرب يتكلم بلهجة جدة الأصيلة — محترمة، دافية، ذكية. مو متكبر، ومو عادي. تحس إنه يعرف قيمته ويعرف قيمتك معه. يحتفل بالتجمع والضيافة والذوق — قيم عميقة في ثقافة جدة.</div>
+        <div style="margin-top:1rem"><span class="tag">الذوق</span><span class="tag">الهيبة</span><span class="tag">الاجتماع</span><span class="tag">الثقافة</span><span class="tag">السهر الراقي</span></div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:0.8rem"><div class="clbl">كيف يظهر بصريًا</div><div class="ctext">ألوان داكنة دافئة. إضاءة لطيفة. تفاصيل ذهبية. محتوى سينمائي هادئ يعكس الفخامة غير الصاخبة — close-ups للتفاصيل، نسيج الأقمشة، الثلج في الأكواب الكريستالية.</div></div>
+        <div class="card" style="margin-bottom:0.8rem"><div class="clbl">كيف يتكلم في السوشيال ميديا</div><div class="ctext">جمل قصيرة واثقة. أقل كلام وأكثر صورة. الـ Feed هو اللوحة المصقولة — الـ Stories هي الطاقة اللحظية والشخصية. كلاهما مهم.</div></div>
+        <div class="card"><div class="clbl">كيف يشعر العميل داخله</div><div class="ctext">يحس إنه في المكان الصح مع الناس الصح. لحظة توقع تحدث فجأة — رائحة مميزة، تفصيل في الخدمة، شيء يصفه لأصدقائه بعدها.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="hdr">
+    <div class="hnum">03 — الفئة المستهدفة</div>
+    <div class="htitle">من يختار المشرب؟</div>
+    <div class="hsub">تحليل شرائح العملاء في جدة</div>
+  </div>
+  <div class="body">
+    <div class="g3" style="margin-bottom:1rem">
+      <div class="persona"><div class="pname">الشاب المهني</div><div class="page">٢٥ — ٣٥ سنة</div><div class="pdesc">يشتغل في قطاع خاص أو لديه مشروعه. يبحث عن مكان يخرج فيه ويعكس ذوقه. يقدّر الجو والتجربة على السعر.</div></div>
+      <div class="persona"><div class="pname">صاحب العمل</div><div class="page">٣٠ — ٤٥ سنة</div><div class="pdesc">يجي للـ informal meetings أو يكافئ فريقه. يريد مكان يعكس ذوقه أمام الآخرين بأجواء راقية.</div></div>
+      <div class="persona"><div class="pname">مجموعة الأصدقاء</div><div class="page">٢٠ — ٣٠ سنة</div><div class="pdesc">يدورون على مكان تجتمع فيه الخيارات. يصورون، يسهرون، ويجلبون شبكتهم الاجتماعية معهم.</div></div>
+    </div>
+    <div class="g2" style="margin-bottom:1rem">
+      <div class="persona"><div class="pname">الأزواج</div><div class="page">٢٥ — ٤٠ سنة</div><div class="pdesc">يدورون على تجربة خروج مختلفة. مكان له "وايب" واضح ومو مجرد مطعم عادي.</div></div>
+      <div class="persona"><div class="pname">صُنّاع المحتوى</div><div class="page">١٨ — ٣٠ سنة</div><div class="pdesc">يبحثون عن مكان "قابل للتصوير" بشكل طبيعي. المكان نفسه يصير prop للمحتوى — الإضاءة، الطبق المميز، الزاوية الجميلة.</div></div>
+    </div>
+    <div style="background:var(--ink);border:0.5px solid #C9A86C4D;border-radius:12px;padding:1.2rem">
+      <div class="clbl">القاسم المشترك</div>
+      <div class="bt">هذي الشرائح لا تستجيب للتخفيضات والإعلانات التقليدية. تستجيب لـ <span style="color:var(--gold);font-weight:600">الحصرية، الهوية، والإحساس بأن المكان صُنع لهم</span> — وأن أناسًا من عالمهم موجودون فيه.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="hdr">
+    <div class="hnum">04 — الركائز التسويقية</div>
+    <div class="htitle">الـ Pillars الخمسة للبراند</div>
+    <div class="hsub">كل ركيزة تبني جزء من هوية المشرب</div>
+  </div>
+  <div class="body">
+    <div class="g3" style="margin-bottom:1rem">
+      <div class="pillar"><div class="pnum">PILLAR 01</div><div class="ptitle">Lifestyle Content</div><div class="ptext">محتوى سينمائي هادئ يعكس أسلوب حياة جدة. مو صور أكل فقط — لحظات تجمع، تفاصيل المكان، وإحساس "أنت في المكان الصح".</div></div>
+      <div class="pillar"><div class="pnum">PILLAR 02</div><div class="ptitle">Community & Moments</div><div class="ptext">خلق لحظات اجتماعية حقيقية تُعاش داخل المشرب. الناس تتكلم عنه لأنها عاشت فيه لحظة فعلية.</div></div>
+      <div class="pillar"><div class="pnum">PILLAR 03</div><div class="ptitle">Food & Experience</div><div class="ptext">تقديم الـ ٤ علامات الغذائية كتجربة متكاملة. طريقة التقديم وتفاصيل الطبق تستحق التصوير والحكي.</div></div>
+    </div>
+    <div class="g2">
+      <div class="pillar"><div class="pnum">PILLAR 04</div><div class="ptitle">Events & Seasonal</div><div class="ptext">رمضان، اليوم الوطني، الشتاء، الصيف — كل موسم له تجربة داخل المشرب تخليه الوجهة الأولى.</div></div>
+      <div class="pillar"><div class="pnum">PILLAR 05</div><div class="ptitle">Status & Social Identity</div><div class="ptext">الوجود في المشرب يصير جزء من هوية الشخص. الناس يجون لأن وجودهم فيه يعبر عن ذوقهم وأسلوب حياتهم.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="hdr">
+    <div class="hnum">05 — استراتيجية المحتوى</div>
+    <div class="htitle">نظام المحتوى الثلاثي</div>
+    <div class="hsub">البراند لا يعتمد على مصدر واحد للمحتوى</div>
+  </div>
+  <div class="body">
+    <div class="g3" style="margin-bottom:1.5rem">
+      <div>
+        <div class="srcblk"><div class="srctitle">الحساب الرسمي</div><ul class="srclist"><li>محتوى سينمائي هادئ للأجواء</li><li>Behind-the-scenes للتحضيرات</li><li>Teaser drops للأحداث القادمة</li><li>الـ Moodboard الموسمي</li><li>Feed مصقول + Stories لحظية</li></ul></div>
+        <div class="ctext" style="font-size:0.78rem;padding-top:0.5rem">الـ Feed هو اللوحة الراقية. الـ Stories هي الطاقة الحية. كلاهما يُكمل الآخر.</div>
+      </div>
+      <div>
+        <div class="srcblk"><div class="srctitle">UGC — محتوى العملاء</div><ul class="srclist"><li>تصميم المكان كـ content prop طبيعي</li><li>طبق signature يُصوَّر تلقائيًا</li><li>هاشتاق خاص بالمشرب</li><li>Repost مع mention للعميل</li><li>مسابقات أفضل لقطة شهرية</li></ul></div>
+        <div class="ctext" style="font-size:0.78rem;padding-top:0.5rem">المكان نفسه يولّد المحتوى — كل زيارة تنتج مشاركة تلقائية.</div>
+      </div>
+      <div>
+        <div class="srcblk"><div class="srctitle">المؤثرون والمشاهير</div><ul class="srclist"><li>زيارات طبيعية بتجربة استثنائية</li><li>Invite-only preview evenings</li><li>استضافة مشاهير شهريًا</li><li>تغطية PR وإعلامية</li><li>Stories أكثر من Posts رسمية</li></ul></div>
+        <div class="ctext" style="font-size:0.78rem;padding-top:0.5rem">الثقة تُبنى خارج حسابك — حين يتكلم الآخرون عنك.</div>
+      </div>
+    </div>
+    <div class="card cg">
+      <div class="clbl">المبدأ الأساسي</div>
+      <div class="ctitle">المحتوى الأصيل لا يُشترى — يُصنع</div>
+      <div class="ctext">الجمهور الراقي يميز الإعلان المباشر ويتجاهله. القوة الحقيقية في المحتوى العضوي — العميل الذي يصوّر تجربته طوعًا، والمؤثر الذي يشارك زيارته بأسلوبه الخاص.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="hdr">
+    <div class="hnum">06 — استراتيجية المؤثرين</div>
+    <div class="htitle">التسلسل الهرمي للمؤثرين</div>
+    <div class="hsub">من نستهدف، ولماذا، وكيف تبدو زيارتهم طبيعية</div>
+  </div>
+  <div class="body">
+    <div style="margin-bottom:1.5rem">
+      <div class="trow"><div class="tbadge tnano">Nano Influencers</div><div class="tinfo"><div class="ttier">٥ آلاف — ٣٠ ألف متابع</div><div class="tdesc2">محتوى أصيل وثقة عالية. مؤثر بـ ٣٠ ألف متابع في جدة يناسب الأجواء أقوى من حساب بـ ٥٠٠ ألف لا يناسب الـ aesthetic. يبنون الـ word-of-mouth الحقيقي.</div><div class="tstat">الأولوية الأعلى — أعلى معدل تفاعل</div></div></div>
+      <div class="trow"><div class="tbadge tlife">Lifestyle Creators</div><div class="tinfo"><div class="ttier">٣٠ ألف — ٢٠٠ ألف متابع</div><div class="tdesc2">يشاركون أسلوب حياتهم لا إعلانات. زيارة المشرب تندمج مع محتواهم بشكل طبيعي. مناسبون لـ invite-only evenings.</div><div class="tstat">مناسب للتفعيل الدوري الشهري</div></div></div>
+      <div class="trow"><div class="tbadge tfood">Food Creators</div><div class="tinfo"><div class="ttier">متخصصون في تجارب الطعام</div><div class="tdesc2">يغطون الـ ٤ علامات الغذائية بتفصيل. محتواهم يحفز المتابعين على التجربة المباشرة.</div><div class="tstat">مناسب لـ Tasting Night Events</div></div></div>
+      <div class="trow"><div class="tbadge tsoc">Social Creators</div><div class="tinfo"><div class="ttier">أكثر من ٢٠٠ ألف</div><div class="tdesc2">يُعاملون كضيوف شرف في المناسبات الكبيرة. لا طلب صريح للنشر — التجربة الاستثنائية هي من تدفعهم.</div><div class="tstat">للمناسبات الكبرى فقط</div></div></div>
+      <div class="trow"><div class="tbadge tceleb">مشاهير</div><div class="tinfo"><div class="ttier">شخصيات عامة ونجوم — استضافة شهرية</div><div class="tdesc2">استضافة مشهور كضيف شرف شهريًا بتجربة VIP حصرية. حضوره يرفع مكانة المكان ويخلق buzz عضوي. الجمهور يرى مشهوره يختار المشرب — لا إعلان يساوي هذه اللحظة.</div><div class="tstat">أعلى مستوى — يبني مصداقية البراند على المدى البعيد</div></div></div>
+    </div>
+    <div class="card cg"><div class="clbl">قاعدة التعامل مع الجميع</div><div class="ctitle">الزيارة لا تبدو إعلانًا</div><div class="ctext">لا نطلب منهم يقولون "بالتعاون مع المشرب". نخلي التجربة ممتازة لدرجة أنهم يشاركونها بأسلوبهم الخاص. الـ authenticity هي البضاعة — والجمهور الراقي يكتشف الإعلان المصطنع فورًا.</div></div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="hdr">
+    <div class="hnum">07 — برنامج استضافة المشاهير</div>
+    <div class="htitle">المشهور يختار المشرب</div>
+    <div class="hsub">استضافة شهرية تبني مكانة البراند وتجعله وجهة الأضواء</div>
+  </div>
+  <div class="body">
+    <div class="stmt">حين يُرى مشهور في مكان بشكل متكرر،<br>المكان <em>يصبح جزءًا من صورته</em>.<br>وصورته تصبح جزءًا من المكان.</div>
+    <div class="g2" style="margin-bottom:1.2rem">
+      <div class="ccblk"><div class="clbl">كيف تتم الاستضافة</div><div class="ctitle">تجربة VIP حصرية بدون طلب نشر</div><div class="ctext">يُدعى المشهور لتجربة خاصة — جلسة مخصصة، منيو مميز، خدمة تذكّره بالاسم وتفضيلاته. لا يوجد طلب صريح للنشر. التجربة الاستثنائية وحدها هي من تدفعه للمشاركة.</div></div>
+      <div class="ccblk"><div class="clbl">لماذا يعمل هذا؟</div><div class="ctitle">Social Proof لا يُشترى بالإعلان</div><div class="ctext">الجمهور يرى مشهوره المفضل يختار المشرب طوعًا. الرسالة الضمنية: "إذا هو يجي هنا، يعني المكان فعلًا يستاهل." هذا المستوى من المصداقية لا تصنعه ميزانية إعلانية.</div></div>
+    </div>
+    <div class="g3">
+      <div class="card"><div class="clbl">نوع المشاهير</div><div class="ctext">فنانون، رياضيون، شخصيات إعلامية، رواد أعمال بارزون — من لديهم حضور اجتماعي قوي في المنطقة.</div></div>
+      <div class="card"><div class="clbl">آلية التفعيل</div><div class="ctext">دعوة شهرية لشخصية واحدة مختارة. الليلة مصممة تجربة لا تُنسى — ليس إعلانًا مدفوعًا.</div></div>
+      <div class="card"><div class="clbl">الأثر المتوقع</div><div class="ctext">كل استضافة تولّد محتوى عضوي، حجوزات جديدة، وتغطية إعلامية بتكلفة أقل بكثير من الإعلان التقليدي.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="hdr">
+    <div class="hnum">08 — تجربة المكان كأداة تسويقية</div>
+    <div class="htitle">المكان نفسه هو التسويق</div>
+    <div class="hsub">التجربة الداخلية هي أقوى أداة استقطاب للجمهور الراقي</div>
+  </div>
+  <div class="body">
+    <div class="bt" style="margin-bottom:1.5rem">الجمهور الراقي لا يستجيب للإعلانات التقليدية. يستجيب لما يعيشه ويحكيه. كل تفصيل داخل المشرب هو رسالة تسويقية صامتة.</div>
+    <div class="g2" style="margin-bottom:1rem">
+      <div>
+        <div class="insight"><div class="insight-title">اللحظة الـ Signature</div><div class="insight-text">شيء يختص به المشرب وحده — طريقة تقديم مميزة، رائحة خاصة للمكان، مشروب ترحيبي غير متوقع. هذا ما يصفه الضيف لأصدقائه بعد الزيارة.</div></div>
+        <div class="insight"><div class="insight-title">الخدمة كـ Brand Ambassador</div><div class="insight-text">الجمهور الراقي يلاحظ كيف يُخاطَب، وكيف يُتذكَّر. "أهلًا، نتذكر إنك تفضل الطاولة الجانبية" — هذه الجملة تساوي إعلانات كاملة.</div></div>
+      </div>
+      <div>
+        <div class="insight"><div class="insight-title">البيئة: موسيقى، إضاءة، إيقاع</div><div class="insight-text">الجمهور الراقي حساس للأجواء التي تشعره بالانزعاج حتى لو لم يستطع وصف السبب. الموسيقى والإضاءة والإيقاع ليست تفاصيل — هي الجو.</div></div>
+        <div class="insight"><div class="insight-title">مساحة خاصة أو شبه خاصة</div><div class="insight-text">حتى منطقة مخصصة داخل المشرب ترسل رسالة بأن الخصوصية ممكنة — وهذا يستقطب حجوزات الأعمال والمناسبات الخاصة.</div></div>
+      </div>
+    </div>
+    <div class="card cg"><div class="clbl">الهدف</div><div class="ctitle">الزيارة تتحول إلى حكاية</div><div class="ctext">حين يغادر الضيف المشرب عنده شيء يصفه — لحظة، تفصيل، إحساس. هذا الوصف الشفهي هو أقوى تسويق موجود لهذا الجمهور تحديدًا.</div></div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="hdr">
+    <div class="hnum">09 — الفعاليات والشراكات</div>
+    <div class="htitle">Events كأداة استقطاب وولاء</div>
+    <div class="hsub">الفعاليات هي أقوى أداة لاستقطاب الجمهور الراقي والاحتفاظ به</div>
+  </div>
+  <div class="body">
+    <div class="g2" style="margin-bottom:1rem">
+      <div class="card cg"><div class="clbl">تجارب حصرية مخصصة</div><div class="ctitle">Curated One-Off Experiences</div><div class="ctext">عشاء مع شيف زائر، ليلة tasting مع قائمة محدودة، حدث سطح خاص ليلة واحدة. الندرة والإتقان هما عامل الجذب — مو السعر.</div></div>
+      <div class="card cg"><div class="clbl">شراكات براندات فاخرة</div><div class="ctitle">Brand Partnership Events</div><div class="ctext">التعاون مع براندات luxury (ساعات، سيارات، موضة، مشروبات) التي تستهدف نفس الجمهور. هم يجلبون عملاءهم، والمشرب يقدم الأجواء والتجربة — كلا الطرفين يربح.</div></div>
+    </div>
+    <div class="g2" style="margin-bottom:1rem">
+      <div class="card"><div class="clbl">فعاليات بدعوة حصرية</div><div class="ctitle">Closed-List Events</div><div class="ctext">حتى فعالية واحدة شهريًا بقائمة مغلقة. مجرد فكرة أنك لا تستطيع الدخول إلا بدعوة تجعل الناس يريدون أن يكونوا على القائمة.</div></div>
+      <div class="card"><div class="clbl">بناء عادات ومجتمع</div><div class="ctitle">Recurring Social Series</div><div class="ctext">فعالية ثابتة شهرية (سهرة اجتماعية، ليلة tasting أسبوعية) تبني عادة لدى الجمهور وتشجعهم على إحضار شبكتهم الاجتماعية.</div></div>
+    </div>
+    <div class="card cg"><div class="clbl">الهدف النهائي من الفعاليات</div><div class="ctitle">الضيف يصبح سفير</div><div class="ctext">حين تتكرر التجارب الاستثنائية، الضيف يبدأ يُعرّف الآخرين على المشرب بنفسه — "تعال معي المشرب، عندهم [تجربة مميزة]." هذا هو الـ word of mouth الذي لا يُشترى.</div></div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="hdr">
+    <div class="hnum">10 — المناسبات السنوية</div>
+    <div class="htitle">كل موسم، تجربة مختلفة</div>
+    <div class="hsub">كيف يتحول المشرب مع كل مناسبة</div>
+  </div>
+  <div class="body">
+    <div class="g3">
+      <div class="season"><div class="smon">رمضان الكريم</div><div class="stitle">ليالي الإفطار والسحور</div><div class="stext">تجربة إفطار جماعية بمنيو رمضاني خاص. جلسات السحور لآخر الليل. أجواء تستحضر روح الشهر بلمسة عصرية.</div></div>
+      <div class="season"><div class="smon">اليوم الوطني — سبتمبر</div><div class="stitle">جدة تحتفل هنا</div><div class="stext">قائمة من الأكلات السعودية بلمسة مبتكرة. محتوى يحتفل بروح جدة والهوية السعودية.</div></div>
+      <div class="season"><div class="smon">الشتاء — ديسمبر & يناير</div><div class="stitle">موسم الجلسات الدافئة</div><div class="stext">أجواء خارجية مميزة. منيو مشروبات دافئة خاص. ليالي تستهدف خروجات الكبار والعائلات.</div></div>
+      <div class="season"><div class="smon">الصيف</div><div class="stitle">ليالي جدة لا تنام</div><div class="stext">تمديد أوقات الجلوس لآخر الليل. منيو مشروبات باردة وحصرية. استهداف المجموعات الكبيرة.</div></div>
+      <div class="season"><div class="smon">كأس العالم والبطولات</div><div class="stitle">مشاهدة جماعية راقية</div><div class="stext">شاشات عرض بجو المشرب. منيو خاص يتناسب مع جو المباريات في أجواء راقية.</div></div>
+      <div class="season"><div class="smon">الأعياد والإجازات</div><div class="stitle">وجهة عيد الأسرة</div><div class="stext">استهداف خروجات العيد العائلية والمجموعات الكبيرة. حجوزات مسبقة وأجواء احتفالية.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="hdr">
+    <div class="hnum">11 — الأولويات التسويقية</div>
+    <div class="htitle">خطة العمل التسويقي</div>
+    <div class="hsub">أبرز المحاور التي يركز عليها فريق التسويق</div>
+  </div>
+  <div class="body">
+    <div>
+      <div class="titem"><div class="tdot">١</div><div><div class="ttitle">توحيد الهوية البصرية عبر كل المنصات</div><div class="ttext">ضبط الـ tone والأسلوب البصري ليكون متسقًا في انستقرام، تيك توك، وسناب شات. الـ Feed مصقول والـ Stories حية — كلاهما يُعبّر عن المشرب.</div></div></div>
+      <div class="titem"><div class="tdot">٢</div><div><div class="ttitle">تفعيل منظومة UGC وتصميم المكان كـ content machine</div><div class="ttext">إطلاق هاشتاق رسمي. تحديد نقاط تصوير داخل المكان — طبق signature، إضاءة درامية، زاوية جميلة. المكان نفسه يولّد المحتوى.</div></div></div>
+      <div class="titem"><div class="tdot">٣</div><div><div class="ttitle">بناء برنامج مؤثرين ثابت بـ invite-only approach</div><div class="ttext">تحديد Nano وLifestyle influencers في جدة يناسبون الـ aesthetic. دعوات لسهرات خاصة لا إعلانات مدفوعة — الزيارة تبدو اكتشافًا طبيعيًا.</div></div></div>
+      <div class="titem"><div class="tdot">٤</div><div><div class="ttitle">تفعيل برنامج استضافة المشاهير شهريًا</div><div class="ttext">تنسيق استضافة شخصية عامة بارزة كل شهر. التجربة VIP بدون طلب نشر — كل استضافة تولّد موجة محتوى ومصداقية عضوية.</div></div></div>
+      <div class="titem"><div class="tdot">٥</div><div><div class="ttitle">إطلاق Events حصرية وشراكات براندات فاخرة</div><div class="ttext">فعالية شهرية بقائمة مغلقة + شراكة مع براند luxury يستهدف نفس الجمهور. كلا الطرفين يجلب جمهوره للآخر.</div></div></div>
+      <div class="titem"><div class="tdot">٦</div><div><div class="ttitle">بناء علاقات مع المنافذ المؤثرة في القرار</div><div class="ttext">كونسيرج الفنادق، منظمو الفعاليات الكوربوريت، وشبكات المساعدين الشخصيين — هذه قنوات مباشرة للجمهور المستهدف.</div></div></div>
+      <div class="titem"><div class="tdot">٧</div><div><div class="ttitle">قياس الأداء وتكرار الناجح</div><div class="ttext">تحليل المحتوى الأعلى تفاعلًا والمؤثرين الأعلى أثرًا. خطة محتوى شهرية مبنية على بيانات حقيقية لا تخمينات.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="slide closing">
+  <div style="font-size:4rem;font-weight:900;color:var(--gold);line-height:1">المشرب</div>
+  <div class="cquote">"ليس مجرد مكان للأكل... بل وجهة اجتماعية تعكس أسلوب حياة جدة"</div>
+  <div style="font-size:1.05rem;color:var(--mu);font-weight:300;line-height:1.8;max-width:600px">المشرب لا يبيع طعامًا — يبيع <strong style="color:var(--gold)">لحظة</strong>. ليلة مختلفة. جلسة تستحق الحكي عنها. في مدينة لا تنام مثل جدة، هذا هو الاستثمار الذكي.</div>
+  <div class="pbadge" style="margin:0">Social Dining Lounge — جدة</div>
+</div>
+
+</div>
+</body>
+</html>
