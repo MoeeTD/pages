@@ -1,0 +1,345 @@
+
+<style>
+  :root {
+    --brand-red: #7c1315;
+    --brand-dark: #493133;
+    --brand-cream: #e7d7c3;
+    --brand-red-light: #f5e8e8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, sans-serif; }
+  .wrap { padding: 1.5rem 0; direction: rtl; }
+  .phase-block { margin-bottom: 2rem; border-radius: 12px; overflow: hidden; border: 0.5px solid var(--color-border-tertiary); }
+  .phase-header { background: var(--brand-red); color: white; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+  .phase-title { font-size: 17px; font-weight: 600; }
+  .phase-sub { font-size: 13px; opacity: 0.85; }
+  .phase-badge { background: rgba(255,255,255,0.2); border-radius: 20px; padding: 4px 12px; font-size: 12px; }
+  .week-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .week-col { padding: 1rem 1.25rem; border-left: 0.5px solid var(--color-border-tertiary); background: var(--color-background-primary); }
+  .week-col:last-child { border-left: none; }
+  .week-label { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 10px; font-weight: 500; letter-spacing: 0.03em; }
+  .post-item { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .post-item:last-child { border-bottom: none; }
+  .platform-tag { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; white-space: nowrap; flex-shrink: 0; }
+  .ig { background: #fce4ec; color: #880e4f; }
+  .tk { background: #e8f5e9; color: #1b5e20; }
+  .both { background: #e3f2fd; color: #0d47a1; }
+  .post-text { font-size: 13px; color: var(--color-text-primary); line-height: 1.5; }
+  .post-idea { font-size: 11px; color: var(--color-text-secondary); margin-top: 3px; }
+  .section-title { font-size: 16px; font-weight: 600; color: var(--brand-red); margin-bottom: 1rem; padding-bottom: 6px; border-bottom: 2px solid var(--brand-cream); }
+  .strategy-overview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 2rem; }
+  .stat-card { background: var(--color-background-secondary); border-radius: 10px; padding: 1rem; text-align: center; }
+  .stat-num { font-size: 28px; font-weight: 700; color: var(--brand-red); }
+  .stat-label { font-size: 12px; color: var(--color-text-secondary); margin-top: 4px; }
+  .pillars-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 2rem; }
+  .pillar { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 10px; padding: 1rem 1.25rem; border-right: 4px solid var(--brand-red); }
+  .pillar-title { font-size: 14px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 4px; }
+  .pillar-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
+  .influencer-box { background: var(--brand-red-light); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2rem; border: 0.5px solid #e8c0c0; }
+  .influencer-title { font-size: 14px; font-weight: 600; color: var(--brand-red); margin-bottom: 8px; }
+  .inf-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .inf-item { background: white; border-radius: 8px; padding: 8px 10px; font-size: 12px; color: var(--color-text-primary); }
+  .inf-type { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; }
+  .launch-timeline { display: flex; gap: 0; margin-bottom: 2rem; }
+  .tl-step { flex: 1; padding: 12px; background: var(--color-background-secondary); position: relative; text-align: center; }
+  .tl-step:not(:last-child)::after { content: '←'; position: absolute; left: -8px; top: 50%; transform: translateY(-50%); color: var(--brand-red); font-size: 16px; z-index: 2; }
+  .tl-step:first-child { border-radius: 0 10px 10px 0; }
+  .tl-step:last-child { border-radius: 10px 0 0 10px; background: var(--brand-red); color: white; }
+  .tl-day { font-size: 11px; opacity: 0.7; margin-bottom: 4px; }
+  .tl-action { font-size: 12px; font-weight: 600; }
+  .caption-box { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 10px; }
+  .caption-label { font-size: 11px; color: var(--brand-red); font-weight: 600; margin-bottom: 6px; }
+  .caption-text { font-size: 13px; color: var(--color-text-primary); line-height: 1.7; direction: rtl; }
+  .caption-hook { font-weight: 700; color: var(--brand-dark); }
+  .tab-bar { display: flex; gap: 8px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .tab-btn { padding: 6px 16px; border-radius: 20px; font-size: 13px; cursor: pointer; border: 0.5px solid var(--color-border-secondary); background: var(--color-background-secondary); color: var(--color-text-secondary); transition: all 0.2s; }
+  .tab-btn.active { background: var(--brand-red); color: white; border-color: var(--brand-red); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  .day-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .day-label { font-size: 12px; font-weight: 600; color: var(--brand-red); min-width: 50px; padding-top: 2px; }
+  .day-posts { flex: 1; }
+  .day-post { background: var(--color-background-secondary); border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; }
+  .dp-header { display: flex; gap: 8px; align-items: center; margin-bottom: 4px; }
+  .dp-title { font-size: 13px; font-weight: 600; color: var(--color-text-primary); }
+  .dp-body { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
+  .off-day { color: var(--color-text-secondary); font-size: 13px; font-style: italic; padding: 8px 0; }
+</style>
+
+<div class="wrap">
+  <h2 class="sr-only">خطة تسويق سليق بيتي - استراتيجية شاملة</h2>
+
+  <p class="section-title">نظرة عامة على الاستراتيجية</p>
+  <div class="strategy-overview">
+    <div class="stat-card">
+      <div class="stat-num">4</div>
+      <div class="stat-label">أسابيع قبل الافتتاح</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">3-4</div>
+      <div class="stat-label">منشورات أسبوعياً</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">2</div>
+      <div class="stat-label">منصة (إنستقرام + تيك توك)</div>
+    </div>
+  </div>
+
+  <p class="section-title">ركائز المحتوى الأساسية</p>
+  <div class="pillars-grid">
+    <div class="pillar">
+      <div class="pillar-title">🧠 التعليم الثقافي</div>
+      <div class="pillar-desc">محتوى عن تاريخ السليق الحجازي، طريقة تحضيره، وفرقه عن غيره. يبني سلطة البراند ومصداقيته</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">🏠 الذاكرة والنوستالجيا</div>
+      <div class="pillar-desc">قصص وذكريات مرتبطة بالسليق. يخلق ارتباط عاطفي قوي مع الجمهور الجداوي</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">🎬 الكواليس والتشويق</div>
+      <div class="pillar-desc">لقطات من التحضيرات، الديكور، والمطبخ. يبني الترقب ويحفز الفضول قبل الافتتاح</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">🤝 تفاعل الجمهور</div>
+      <div class="pillar-desc">أسئلة، استطلاعات، وتحديات. يحول المتابعين لمجتمع فعلي يتشارك الاهتمام</div>
+    </div>
+  </div>
+
+  <p class="section-title">تواصل مع المؤثرين - خطة عملية</p>
+  <div class="influencer-box">
+    <div class="influencer-title">من تتواصل معهم وكيف</div>
+    <div class="inf-grid">
+      <div class="inf-item">
+        محتوى طعام جدة
+        <div class="inf-type">مؤثر صغير 10-50K • الأنسب</div>
+      </div>
+      <div class="inf-item">
+        مدونو التراث السعودي
+        <div class="inf-type">مؤثر متوسط • مصداقية عالية</div>
+      </div>
+      <div class="inf-item">
+        مجتمعات أهل جدة
+        <div class="inf-type">صفحات محلية • وصول مجاني</div>
+      </div>
+    </div>
+    <p style="font-size: 12px; color: var(--color-text-secondary); margin-top: 10px; line-height: 1.7;">
+      العرض: وجبة مجانية في السوفت لونش + ذكر في منشور واحد. لا تشتري إعلانات — اطلب "تجربة صادقة"
+    </p>
+  </div>
+
+  <p class="section-title">الجدول الأسبوعي التفصيلي</p>
+
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('w1')">الأسبوع 1</button>
+    <button class="tab-btn" onclick="switchTab('w2')">الأسبوع 2</button>
+    <button class="tab-btn" onclick="switchTab('w3')">الأسبوع 3</button>
+    <button class="tab-btn" onclick="switchTab('w4')">السوفت لونش</button>
+  </div>
+
+  <div id="w1" class="tab-content active">
+    <div style="background: var(--color-background-secondary); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 13px; color: var(--color-text-secondary);">
+      🎯 هدف الأسبوع: إطلاق الحسابات وزرع الفضول — "مين سليق بيتي؟"
+    </div>
+    <div class="day-row">
+      <div class="day-label">الأحد</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag ig">إنستقرام</span><span class="dp-title">أول منشور — الهوية</span></div>
+          <div class="dp-body">صورة اللوقو على خلفية سوداء بدون أي كلام. التعليق: "قريباً في جدة." — اللغز يبدأ من هنا</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">الثلاثاء</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag tk">تيك توك</span><span class="dp-title">محتوى تعليمي - ما هو السليق؟</span></div>
+          <div class="dp-body">فيديو قصير 30 ثانية: "السليق مو بس أكل — هو ذاكرة كل بيت حجازي" + لقطات تحضير</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">الخميس</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag both">الاثنين</span><span class="dp-title">استطلاع تفاعلي</span></div>
+          <div class="dp-body">استطلاع إنستقرام ستوري: "وش يطلع في بالك لما تسمع كلمة سليق؟" — يجمع جمهور ويخلق محادثة</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">السبت</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag ig">إنستقرام</span><span class="dp-title">ريلز - السر وراء الاسم</span></div>
+          <div class="dp-body">ريلز قصير: قصة اسم "سليق بيتي" ولماذا "بيتي" تحديداً. يبني ارتباط عاطفي</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="w2" class="tab-content">
+    <div style="background: var(--color-background-secondary); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 13px; color: var(--color-text-secondary);">
+      🎯 هدف الأسبوع: التعليم الثقافي + بناء مصداقية البراند
+    </div>
+    <div class="day-row">
+      <div class="day-label">الأحد</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag tk">تيك توك</span><span class="dp-title">فرق السليق عن الأرز العادي</span></div>
+          <div class="dp-body">فيديو تعليمي: "ليش السليق الحجازي غير عن أي أرز ثاني؟" — المكونات، الطريقة، والسر</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">الثلاثاء</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag ig">إنستقرام</span><span class="dp-title">بوست نوستالجيا</span></div>
+          <div class="dp-body">كاروسيل: "٥ ذكريات كل واحد من جدة يعرفها مع السليق" — ذكريات عيد، جمعة، ضيوف</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">الخميس</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag both">كلا المنصتين</span><span class="dp-title">كواليس التحضير</span></div>
+          <div class="dp-body">فيديو قصير من الكواليس — الديكور، المطبخ، التجهيزات. "شوية وافتتحنا"</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">السبت</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag ig">إنستقرام</span><span class="dp-title">تحدي الجمهور</span></div>
+          <div class="dp-body">"أرسل لنا صورة آخر مرة أكلت سليق" — يشارك الجمهور محتواه ويخلق UGC مجاني</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="w3" class="tab-content">
+    <div style="background: var(--color-background-secondary); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 13px; color: var(--color-text-secondary);">
+      🎯 هدف الأسبوع: رفع الترقب للذروة + التواصل مع المؤثرين
+    </div>
+    <div class="day-row">
+      <div class="day-label">الأحد</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag tk">تيك توك</span><span class="dp-title">لقطة قريبة من السليق</span></div>
+          <div class="dp-body">فيديو ASMR: صوت السليق يُسكب في الطبق. بدون كلام. الصوت يكفي. وقت الافتتاح في البايو</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">الثلاثاء</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag ig">إنستقرام</span><span class="dp-title">إعلان السوفت لونش</span></div>
+          <div class="dp-body">"بنفتح أبوابنا لعدد محدود قبل الافتتاح الرسمي — تواصل معنا على الخاص للحجز"</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">الخميس</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag both">كلا المنصتين</span><span class="dp-title">هوية المكان</span></div>
+          <div class="dp-body">تور سريع في المطعم — الطاولات، الديكور الحجازي، الأجواء. "هنا ستأكل أول سليق بيتي"</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">السبت</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag ig">إنستقرام</span><span class="dp-title">العد التنازلي</span></div>
+          <div class="dp-body">ستوري بالعد التنازلي + إعادة نشر قصص من ترشح للسوفت لونش. الهايب يبني الهايب</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="w4" class="tab-content">
+    <div style="background: #fce4ec; border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 13px; color: #880e4f;">
+      🚀 أسبوع السوفت لونش والافتتاح الرسمي
+    </div>
+    <div class="day-row">
+      <div class="day-label">الأحد</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag both">كلا المنصتين</span><span class="dp-title">يوم السوفت لونش</span></div>
+          <div class="dp-body">فيديو LIVE أو ريلز من اللحظة الأولى. المؤثرون ينشرون من المكان. الضيوف يصورون. المحتوى يُنشأ من نفسه</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">الثلاثاء</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag ig">إنستقرام</span><span class="dp-title">ردود فعل الضيوف</span></div>
+          <div class="dp-body">كاروسيل لصور وتعليقات ضيوف السوفت لونش الحقيقية. الصدق أقوى من أي إعلان</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">الخميس</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag both">كلا المنصتين</span><span class="dp-title">إعلان الافتتاح الرسمي</span></div>
+          <div class="dp-body">منشور بجودة عالية: "سليق بيتي — مفتوح من اليوم. حي السلامة، جدة" + العنوان والساعات</div>
+        </div>
+      </div>
+    </div>
+    <div class="day-row">
+      <div class="day-label">السبت</div>
+      <div class="day-posts">
+        <div class="day-post">
+          <div class="dp-header"><span class="platform-tag tk">تيك توك</span><span class="dp-title">فيديو يوم الافتتاح</span></div>
+          <div class="dp-body">فيديو ملخص ليوم الافتتاح — الطابور، الوجوه، السليق. "يوم ما ننساه" — محتوى عاطفي أصيل</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-title" style="margin-top: 2rem;">أمثلة كابشن جاهزة للنشر</p>
+
+  <div class="caption-box">
+    <div class="caption-label">الأسبوع 1 — أول منشور</div>
+    <div class="caption-text">
+      <span class="caption-hook">سليق بيتي.</span><br>
+      قريباً في جدة. 🤫
+    </div>
+  </div>
+
+  <div class="caption-box">
+    <div class="caption-label">الأسبوع 2 — بوست نوستالجيا</div>
+    <div class="caption-text">
+      <span class="caption-hook">السليق مو بس أكل.</span><br>
+      هو ذاكرة كل بيت حجازي.<br>
+      الجمعة، العيد، الضيوف — دايم السليق حاضر.<br><br>
+      قريباً نصحيله الذاكرة. 🍚
+    </div>
+  </div>
+
+  <div class="caption-box">
+    <div class="caption-label">الأسبوع 3 — إعلان السوفت لونش</div>
+    <div class="caption-text">
+      <span class="caption-hook">قبل ما نفتح للكل — بنفتح لكم أنتم.</span><br>
+      عدد محدود من الأصدقاء يجربون سليق بيتي قبل الافتتاح الرسمي.<br><br>
+      تبي تكون منهم؟ تواصل معنا على الخاص. 📩
+    </div>
+  </div>
+
+</div>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
